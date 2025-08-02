@@ -1,0 +1,79 @@
+/* Pomodoro Timer Extension Styles */
+
+/* Panel container */
+.pomodoro-panel-box {
+  spacing: 6px;
+  padding: 0;
+  align-items: center;
+}
+
+.pomodoro-panel-box .system-status-icon {
+  font-size: 1em;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+}
+
+.pomodoro-timer-label {
+  font-feature-settings: "tnum";
+  font-size: 1em;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+}
+
+/* State colors */
+.pomodoro-state-work .pomodoro-panel-box .system-status-icon {
+  color: #ff7b63;
+}
+
+.pomodoro-state-break .pomodoro-panel-box .system-status-icon {
+  color: #57e389;
+}
+
+.pomodoro-state-paused .pomodoro-panel-box .system-status-icon {
+  color: #f9a825;
+}
+
+/* Blinking animation */
+.pomodoro-blinking {
+  animation: pomodoro-blink 1.2s infinite;
+}
+
+@keyframes pomodoro-blink {
+  50% {
+    opacity: 0.4;
+  }
+}
+
+/* Menu styles */
+.pomodoro-menu-title {
+  font-weight: bold;
+  font-size: 1.2em;
+  text-align: center;
+  padding: 10px 16px;
+}
+
+.pomodoro-status {
+  font-size: 1em;
+  color: #cccccc;
+}
+
+.pomodoro-progress {
+  font-size: 0.9em;
+  color: #888888;
+  font-weight: bold;
+}
+
+/* Timer states */
+.pomodoro-running {
+  /* Active work session */
+}
+
+.pomodoro-break {
+  /* Break time */
+}
+
+.pomodoro-paused {
+  /* Timer paused */
+}

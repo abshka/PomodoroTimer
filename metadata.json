@@ -1,0 +1,8 @@
+{
+  "uuid": "pomodorotimer@markelofaleksei@gmail.com",
+  "name": "PomodoroTimer",
+  "description": "PomodoroTimer for GNOME Shell panel with customizable work/break durations, round tracking, visual/audio notifications. Features pause, stop, and reset functionality with persistent state.",
+  "version": 1,
+  "shell-version": ["45", "46", "47", "48"],
+  "url": "https://github.com/abshka/PomodoroTimer"
+}

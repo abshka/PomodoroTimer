@@ -1,0 +1,11 @@
+{
+  "totalRounds": 4,
+  "workDuration": 1500,
+  "breakDuration": 300,
+  "longBreakDuration": 900,
+  "soundEnabled": true,
+  "soundFile": "/usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga",
+  "indicatorPosition": "right",
+  "indicatorIndex": 0,
+  "showTimeAlways": true
+}

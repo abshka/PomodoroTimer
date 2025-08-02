@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.pomodorotimer" path="/org/gnome/shell/extensions/pomodorotimer/">
+    <key name="work-duration" type="i">
+      <default>25</default>
+      <summary>Work duration in minutes</summary>
+    </key>
+    <key name="short-break-duration" type="i">
+      <default>5</default>
+      <summary>Short break duration in minutes</summary>
+    </key>
+    <key name="long-break-duration" type="i">
+      <default>15</default>
+      <summary>Long break duration in minutes</summary>
+    </key>
+    <key name="rounds" type="i">
+      <default>4</default>
+      <summary>Rounds before a long break</summary>
+    </key>
+  </schema>
+</schemalist>
