@@ -1,44 +1,78 @@
 # 🍅 PomodoroTimer for GNOME Shell
 
-A minimalist extension for GNOME Shell implementing the Pomodoro technique to boost productivity.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GNOME Shell](https://img.shields.io/badge/GNOME%20Shell-45%2B-blue.svg)](https://www.gnome.org/)
+[![Version](https://img.shields.io/badge/Version-1.0-green.svg)](https://github.com/abshka/PomodoroTimer/releases)
+
+A modern, feature-rich Pomodoro Timer extension for GNOME Shell with persistent state, dynamic settings, and comprehensive timer controls.
+
+> **Perfect for productivity enthusiasts using the Pomodoro Technique!**
 
 ## ✨ Features
 
 ### Core Features
 
-- **Session system** with customizable number of sessions (2-10 sessions)
-- **Flexible time settings** for work and breaks
-- **Automatic switching** between work and break periods
-- **Progress tracking** with display of current session
-- **Visual effects** - blinking when sessions end
-- **System notifications** with detailed information
-- **Customizable sound alerts** with file selection
-- **Full sound control** - enable/disable and test playback
-- **Intuitive menu** with audio player icons
+- **🔄 Smart Session System** - Customizable rounds (1-10) with proper cycle logic
+- **⏰ Flexible Timing** - Work/break durations from 5-60 minutes
+- **🎯 Three Control Modes** - Pause (temporary), Stop (restart period), Reset (full restart)
+- **💾 Persistent State** - Survives GNOME Shell restarts and crashes
+- **⚡ Dynamic Settings** - Change preferences without interrupting running timer
+- **🔊 Audio Notifications** - Custom sound files with test playback
+- **🎨 Visual Feedback** - Indicator blinking and status icons (🍅 work, ☕ break)
+- **📍 Flexible Positioning** - Customizable panel position and time display
 
-### Visual Indicators
+### Advanced Features
 
-- 🍅 **Tomato icon** in the status bar for work time
-- ☕ **Coffee icon** for break time
-- ⏰ **Time display** with monospace font
-- ✨ **Blinking** at the end of sessions to attract attention
+- **State Management** - Timer state and settings stored independently
+- **Zero Interruption** - Modify settings while timer runs without state loss
+- **Smart Controls** - Different stop behaviors for different scenarios
+- **Cross-Session Persistence** - Resume exactly where you left off
+- **Accessibility** - Works with/without time display, full indicator blinking
 
 ## 🚀 Installation
 
-1. Copy the extension folder to the GNOME Shell directory:
+### Method 1: From GitHub Repository (Recommended)
+
+1. **Clone the repository:**
 
    ```bash
-   cp -r pomodorotimer@markelofaleksei@gmail.com ~/.local/share/gnome-shell/extensions/
+   git clone https://github.com/abshka/PomodoroTimer.git
+   cd PomodoroTimer
    ```
 
-2. Restart GNOME Shell:
+2. **Install the extension:**
+
+   ```bash
+   # Create extensions directory if it doesn't exist
+   mkdir -p ~/.local/share/gnome-shell/extensions/
+
+   # Copy extension files
+   cp -r . ~/.local/share/gnome-shell/extensions/pomodorotimer@markelofaleksei@gmail.com/
+   ```
+
+3. **Restart GNOME Shell:**
    - **X11**: `Alt + F2`, type `r` and press Enter
    - **Wayland**: Log out and log back in
 
-3. Enable the extension:
+4. **Enable the extension:**
    ```bash
    gnome-extensions enable pomodorotimer@markelofaleksei@gmail.com
    ```
+
+### Method 2: Download ZIP
+
+1. **Download:** [Latest Release](https://github.com/abshka/PomodoroTimer/releases/latest)
+2. **Extract** to `~/.local/share/gnome-shell/extensions/pomodorotimer@markelofaleksei@gmail.com/`
+3. **Restart GNOME Shell** (see above)
+4. **Enable extension** (see above)
+
+### Method 3: One-liner Installation
+
+```bash
+git clone https://github.com/abshka/PomodoroTimer.git ~/.local/share/gnome-shell/extensions/pomodorotimer@markelofaleksei@gmail.com && gnome-extensions enable pomodorotimer@markelofaleksei@gmail.com
+```
+
+Then restart GNOME Shell.
 
 ## 🎯 Usage
 
@@ -82,6 +116,18 @@ The settings window offers the following options:
 - **Automatic reset** after the whole cycle is finished
 - **Correct increment logic**: Sessions are properly increased after each work period
 - **Progress display** in format "Round: 2/4"
+
+### Timer Controls Logic
+
+- **▶ Start/|| Pause** - Start and temporary pause (saves exact time)
+- **◼ Stop** - Return to beginning of current period (work/break), preserving session
+- **↻ Reset** - Complete reset to first session and work state
+
+### State Management
+
+- **Persistent state** - Timer state survives GNOME Shell restarts
+- **Dynamic settings** - Change settings without interrupting running timer
+- **Separate storage** - Timer state and user settings stored independently
 
 ## 🎨 Customization
 
@@ -144,14 +190,77 @@ pulseaudio --check -v
 
 MIT License - use and modify freely for your needs.
 
+## 🛠️ Development
+
+### Local Development Setup
+
+1. **Clone and link for development:**
+
+   ```bash
+   git clone https://github.com/abshka/PomodoroTimer.git
+   cd PomodoroTimer
+
+   # Link to extensions directory for development
+   ln -sf "$PWD" ~/.local/share/gnome-shell/extensions/pomodorotimer@markelofaleksei@gmail.com
+   ```
+
+2. **Enable development mode:**
+
+   ```bash
+   # Enable extension
+   gnome-extensions enable pomodorotimer@markelofaleksei@gmail.com
+
+   # Monitor logs for debugging
+   journalctl /usr/bin/gnome-shell -f | grep -i pomodoro
+   ```
+
+3. **After making changes:**
+   ```bash
+   # Restart extension
+   gnome-extensions disable pomodorotimer@markelofaleksei@gmail.com
+   gnome-extensions enable pomodorotimer@markelofaleksei@gmail.com
+   ```
+
+### File Structure
+
+```
+pomodorotimer@markelofaleksei@gmail.com/
+├── extension.js          # Main extension logic
+├── prefs.js              # Settings UI
+├── metadata.json         # Extension metadata
+├── stylesheet.css        # Visual styles
+├── settings.json         # Default user settings
+├── schemas/              # GSettings schemas
+│   └── org.gnome.shell.extensions.pomodorotimer.gschema.xml
+└── README.md            # Documentation
+```
+
+### Testing
+
+- Test all timer states: work, short break, long break
+- Test pause/stop/reset functionality
+- Test settings changes during timer operation
+- Test GNOME Shell restart persistence
+- Test on different GNOME Shell versions
+
 ## 🤝 Contributing
 
 All improvements are welcome! To contribute:
 
-1. Create a fork of the project
-2. Make your changes
-3. Test on your system
-4. Submit a pull request
+1. Fork the project
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Make your changes
+4. Test thoroughly on your system
+5. Commit your changes (`git commit -m 'Add amazing feature'`)
+6. Push to the branch (`git push origin feature/amazing-feature`)
+7. Open a Pull Request
+
+### Contribution Guidelines
+
+- Follow existing code style
+- Test on multiple GNOME Shell versions if possible
+- Update documentation for new features
+- Add comments for complex logic
 
 ## 📞 Support
 
